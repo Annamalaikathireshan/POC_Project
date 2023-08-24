@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "POC_Project"
+  "defaultProject": "POC_Project",
+  "cli": {
+    "analytics": false
+  }
 }

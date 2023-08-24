@@ -1,22 +1,41 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<form>
-  <div>
-    <h1>POC Project</h1>
+<div class="register-form">
+  <h1>POC Project</h1>
     <p>Enter the details</p>
-    
-    <label for="productid"><b>Product ID</b></label> <br>
-    <input type="number" placeholder="product ID" name="productid" id="productid" required><br> <br>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Product ID</label>
+      <input
+        type="text"
+        formControlName="productID"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['productID'].errors }"
+      />
+      <div *ngIf="submitted && f['productID'].errors" class="invalid-feedback">
+        <div *ngIf="f['productID'].errors['required']">Product ID is required</div>
+      </div>
+    </div>
 
-    <label for="prd"><b>Product Name</b></label> <br>
-    <input type="text" placeholder="Product Name" name="prd" id="prd" required> 
-    
-  </div>
-</form>
-  <button class="registerbtn" (click)="onSave($event)">Submit</button>
+    <div class="form-group">
+      <label>Product Name</label>
+      <input
+        type="text"
+        formControlName="productName"
+        class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f['productName'].errors }"
+      />
+      <div *ngIf="submitted && f['productName'].errors" class="invalid-feedback">
+        <div *ngIf="f['productName'].errors['required']">Product Name is required</div>
+        <div *ngIf="f['productName'].errors['minlength']">
+          Product Name must be at least 6 characters
+        </div>
+        <div *ngIf="f['productName'].errors['maxlength']">
+          Product Name must not exceed 20 characters
+        </div>
+      </div>
+    </div>
 
-</body>
-</html>
-
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
