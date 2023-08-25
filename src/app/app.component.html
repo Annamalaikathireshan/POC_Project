@@ -17,12 +17,6 @@
         [ngClass]="{ 'is-invalid': submitted && f['productName'].errors }" />
       <div *ngIf="submitted && f['productName'].errors" class="invalid-feedback">
         <div *ngIf="f['productName'].errors['required']">Product Name is required</div>
-        <div *ngIf="f['productName'].errors['minlength']">
-          Product Name must be at least 6 characters
-        </div>
-        <div *ngIf="f['productName'].errors['maxlength']">
-          Product Name must not exceed 20 characters
-        </div>
       </div>
     </div>
 

@@ -26,14 +26,7 @@ export class AppComponent {
     this.form = this.formBuilder.group(
       {
         productID: ['', Validators.required],
-        productName: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(20),
-          ],
-        ],
+        productName: ['',Validators.required],
       },
     );
   }
@@ -48,8 +41,8 @@ export class AppComponent {
     if (this.form.invalid) {
       return;
     }
-    
-    console.log(JSON.stringify(this.form.value, null, 2));
+    console.log(this.form.value)
+    // console.log(JSON.stringify(this.form.value, null, 2));
   }
 
   onReset(): void {
